@@ -1,86 +1,273 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>CHILOFA.NET</title>
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#07111f;color:#fff}
-nav{position:sticky;top:0;background:#050b14;padding:18px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #18314f;z-index:10}
-nav a{color:#fff;text-decoration:none;margin-left:25px;font-weight:bold;font-size:14px}
-.logo{font-size:24px;font-weight:bold}
-section{padding:70px 7%}
-.hero{min-height:70vh;display:flex;align-items:center;background:radial-gradient(circle at right,#123b75,#07111f 55%)}
-.hero h1{font-size:64px;margin:10px 0}
-.blue{color:#2487ff}
-.subtitle{font-size:21px;color:#d5e3f5}
-.btn{display:inline-block;margin:20px 10px 0 0;padding:14px 24px;border-radius:6px;text-decoration:none;color:white;background:#1769e8;font-weight:bold}
-.btn.outline{background:transparent;border:1px solid #1769e8}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
-.card{background:#0d1b2e;border:1px solid #1f3d63;border-radius:14px;padding:28px}
-.card h3{margin-top:0}
-.card a{color:#38bdf8;text-decoration:none;font-weight:bold}
-#contatti a{color:white;text-decoration:none}
-footer{text-align:center;padding:30px;color:#8ba3bd;border-top:1px solid #18314f}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#050b16;
+  color:#fff;
+  line-height:1.6;
+}
+a{text-decoration:none;color:inherit}
+nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(5,11,22,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(0,191,255,.25);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 6%;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:26px;
+  font-weight:800;
+}
+.logo-mark{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:conic-gradient(from 20deg,#0077ff,#35d5ff,#0077ff);
+  mask:radial-gradient(circle at center,transparent 0 22%,#000 23%);
+}
+.logo span{color:#18bfff}
+.menu a{
+  margin-left:28px;
+  font-size:14px;
+  font-weight:bold;
+  letter-spacing:.5px;
+}
+.menu a:hover{color:#18bfff}
+.hero{
+  min-height:82vh;
+  padding:90px 6%;
+  display:flex;
+  align-items:center;
+  background:
+    linear-gradient(90deg,#050b16 0%,rgba(5,11,22,.92) 45%,rgba(5,11,22,.3) 100%),
+    radial-gradient(circle at 72% 35%,rgba(0,191,255,.35),transparent 35%),
+    repeating-linear-gradient(120deg,rgba(0,191,255,.06) 0 1px,transparent 1px 80px);
+  position:relative;
+  overflow:hidden;
+}
+.hero:after{
+  content:"Human in the Loop";
+  position:absolute;
+  right:5%;
+  top:12%;
+  font-size:90px;
+  line-height:.9;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(80,190,255,.18);
+  max-width:520px;
+  font-weight:900;
+}
+.hero-content{max-width:650px;position:relative;z-index:2}
+.eyebrow{
+  color:#18bfff;
+  letter-spacing:3px;
+  font-weight:bold;
+  margin-bottom:18px;
+}
+h1{
+  font-size:70px;
+  line-height:1;
+  margin-bottom:20px;
+}
+h1 span{color:#18bfff}
+.hero p{
+  font-size:20px;
+  color:#c9d7e8;
+  max-width:620px;
+}
+.buttons{margin-top:34px;display:flex;gap:16px;flex-wrap:wrap}
+.btn{
+  padding:14px 24px;
+  border-radius:7px;
+  background:#0788ff;
+  border:1px solid #0788ff;
+  font-weight:bold;
+  display:inline-block;
+}
+.btn.secondary{background:transparent;border-color:#18bfff}
+.btn:hover{transform:translateY(-2px);transition:.2s}
+section{padding:70px 6%}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+.card,.wide-card,.contact-box{
+  background:linear-gradient(145deg,rgba(13,30,55,.95),rgba(5,11,22,.95));
+  border:1px solid rgba(24,191,255,.25);
+  border-radius:14px;
+  padding:30px;
+  box-shadow:0 0 35px rgba(0,120,255,.08);
+}
+.card h2,.wide-card h2{font-size:30px;margin-bottom:8px}
+.label{color:#18bfff;margin-bottom:22px}
+.card p,.wide-card p,.contact-box p{color:#c9d7e8}
+.card .btn{margin-top:30px}
+.two{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+}
+.vision-title{
+  font-size:32px;
+  color:#18bfff;
+  margin-top:18px;
+}
+.contact-box{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:30px;
+  align-items:center;
+}
+.contact-box h3{color:#18bfff;margin-bottom:10px}
+.contact-link{
+  display:block;
+  font-size:20px;
+  margin:12px 0;
+}
+.whatsapp{
+  background:#0aa84f;
+  border-color:#0aa84f;
+}
+footer{
+  padding:30px 6%;
+  border-top:1px solid rgba(0,191,255,.2);
+  color:#8ea4bc;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:20px;
+}
+.floating-wa{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:200;
+  background:#0aa84f;
+  color:#fff;
+  padding:14px 18px;
+  border-radius:50px;
+  font-weight:bold;
+  box-shadow:0 0 25px rgba(10,168,79,.5);
+}
+@media(max-width:800px){
+  nav{flex-direction:column;gap:18px}
+  .menu{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+  .menu a{margin-left:0}
+  h1{font-size:46px}
+  .hero:after{font-size:54px;opacity:.5}
+  .contact-box{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">CHILOFA.NET</div>
-  <div>
+  <div class="logo">
+    <div class="logo-mark"></div>
+    CHILOFA<span>.NET</span>
+  </div>
+  <div class="menu">
     <a href="#home">HOME</a>
-    <a href="#progetti">PROGETTI</a>
+    <a href="#alam">ALAM</a>
+    <a href="#furihub">FURI HUB</a>
     <a href="#ailab">AI LAB</a>
+    <a href="#documenti">DOCUMENTI</a>
     <a href="#contatti">CONTATTI</a>
   </div>
 </nav>
 
-<section id="home" class="hero">
-  <div>
-    <p class="blue"><strong>MARCO FURI</strong></p>
-    <h1>CHILOFA.NET</h1>
-    <p class="subtitle">Innovazione • Intelligenza Artificiale • Accessibilità • Progetti Digitali</p>
-    <p>Creo soluzioni, strumenti e contenuti per un futuro più intelligente, accessibile e umano.</p>
-    <a class="btn" href="#progetti">SCOPRI I PROGETTI</a>
-    <a class="btn outline" href="#contatti">CONTATTAMI</a>
+<header id="home" class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">HUMAN IN THE LOOP</div>
+    <h1>CHILOFA<span>.NET</span></h1>
+    <p>Innovazione, Intelligenza Artificiale, Accessibilità e Progetti Digitali.</p>
+    <p>Progettiamo soluzioni che uniscono tecnologia e persone, per creare un futuro più inclusivo, intelligente e sostenibile.</p>
+    <div class="buttons">
+      <a class="btn" href="#alam">SCOPRI ALAM</a>
+      <a class="btn secondary" href="#furihub">ESPLORA FURI HUB</a>
+      <a class="btn secondary" href="#ailab">AI LAB</a>
+    </div>
+  </div>
+</header>
+
+<section class="grid">
+  <div id="alam" class="card">
+    <h2>ALAM</h2>
+    <div class="label">Adaptive Language Accessibility Mediation</div>
+    <p>Soluzioni di accessibilità multimodale per abbattere le barriere comunicative e rendere informazione, eventi e spazi accessibili a tutti.</p>
+    <a class="btn" href="#documenti">SCOPRI IL PROGETTO</a>
+  </div>
+
+  <div id="furihub" class="card">
+    <h2>FURI HUB</h2>
+    <div class="label">Workspace AI per organizzare conoscenza e progetti</div>
+    <p>Uno spazio intelligente per gestire documenti, decisioni, attività e conoscenza in modo strutturato e collaborativo.</p>
+    <a class="btn secondary" href="#documenti">VEDI ROADMAP</a>
+  </div>
+
+  <div id="ailab" class="card">
+    <h2>AI LAB</h2>
+    <div class="label">Laboratorio pratico di Intelligenza Artificiale</div>
+    <p>Esploriamo, testiamo e condividiamo strumenti, prompt e metodologie per applicare l'AI in modo concreto.</p>
+    <a class="btn" href="#documenti">ESPLORA AI LAB</a>
   </div>
 </section>
 
-<section id="progetti">
-  <h2>I miei progetti</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>ALAM</h3>
-      <p>Ecosistema per l’accessibilità, la LIS e la comunicazione inclusiva.</p>
-      <a href="#">Sezione in costruzione →</a>
-    </div>
-    <div class="card">
-      <h3>FURI HUB</h3>
-      <p>Workspace intelligente per organizzare conoscenza, documenti e decisioni.</p>
-      <a href="#">Sezione in costruzione →</a>
-    </div>
-    <div class="card">
-      <h3>Altri progetti</h3>
-      <p>Idee, prototipi e sperimentazioni in ambito digitale, AI e innovazione.</p>
-      <a href="#">Sezione in costruzione →</a>
-    </div>
+<section class="two">
+  <div id="documenti" class="wide-card">
+    <h2>DOCUMENTAZIONE</h2>
+    <p>Approfondimenti, guide e documenti tecnici sui progetti CHILOFA.NET.</p>
+    <a class="btn secondary" href="#">VAI AI DOCUMENTI</a>
   </div>
-</section>
 
-<section id="ailab">
-  <h2>AI LAB</h2>
-  <p>Area dedicata a test, strumenti, prompt, guide e applicazioni pratiche dell’intelligenza artificiale.</p>
+  <div class="wide-card">
+    <h2>LA NOSTRA VISIONE</h2>
+    <p>Crediamo che l'intelligenza artificiale debba amplificare le capacità umane, non sostituirle.</p>
+    <div class="vision-title">Human in the Loop</div>
+  </div>
 </section>
 
 <section id="contatti">
-  <h2>Contatti</h2>
-  <p>Email: <a href="mailto:chilofanet@gmail.com">chilofanet@gmail.com</a></p>
-  <p>WhatsApp: <a href="https://wa.me/393286315625" target="_blank">328 631 5625</a></p>
+  <div class="contact-box">
+    <div>
+      <h3>Marco Furi</h3>
+      <p>Tecnico CAD, progettista e sperimentatore nel campo dell'intelligenza artificiale, dell'accessibilità e dell'innovazione digitale.</p>
+    </div>
+
+    <div>
+      <a class="contact-link" href="mailto:chilofanet@gmail.com">✉️ chilofanet@gmail.com</a>
+      <a class="contact-link" href="https://wa.me/393286315625" target="_blank">💬 +39 328 631 5625</a>
+    </div>
+
+    <div>
+      <h3>Parliamo del tuo progetto</h3>
+      <p>Hai un'idea, un progetto o vuoi collaborare?</p>
+      <a class="btn whatsapp" href="https://wa.me/393286315625" target="_blank">CHATTA SU WHATSAPP</a>
+    </div>
+  </div>
 </section>
 
+<a class="floating-wa" href="https://wa.me/393286315625" target="_blank">WhatsApp</a>
+
 <footer>
-  © 2026 CHILOFA.NET — Tutti i diritti riservati
+  <div>CHILOFA.NET</div>
+  <div>© 2026 CHILOFA.NET — Tutti i diritti riservati</div>
 </footer>
 
 </body>
